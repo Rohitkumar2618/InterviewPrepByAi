@@ -23,14 +23,13 @@ const InterviewCard = ({
 
   return (
     <div className="card-border w-[360px] max-sm:w-full min-h-96">
-        <div className="card-interview">
-            
-            <div>
-                <div className="absolute top-0 right-0 w-fit px-4 py-2 rounded-bl-lg bg-light-600"><p className="badge-text">{normalizedType}</p>
-               
-                </div>
-                 
-                 <Image
+      <div className="card-interview">
+        <div>
+          <div className="absolute top-0 right-0 w-fit px-4 py-2 rounded-bl-lg bg-light-600">
+            <p className="badge-text">{normalizedType}</p>
+          </div>
+
+          <Image
             src={getRandomInterviewCover()}
             alt="cover-image"
             width={90}
@@ -38,10 +37,10 @@ const InterviewCard = ({
             className="rounded-full object-fit size-[90px]"
           />
 
-            {/* Interview Role */}
+          {/* Interview Role */}
           <h3 className="mt-5 capitalize">{role} Interview</h3>
 
-              {/* Date & Score */}
+          {/* Date & Score */}
           <div className="flex flex-row gap-5 mt-3">
             <div className="flex flex-row gap-2">
               <Image
@@ -50,6 +49,7 @@ const InterviewCard = ({
                 height={22}
                 alt="calendar"
               />
+              
               <p>{formattedDate}</p>
             </div>
 
@@ -62,24 +62,25 @@ const InterviewCard = ({
             {feedback?.finalAssessment ||
               "You haven't taken the interview yet. Take it now to improve your skills."}
           </p>
-
-            </div>
-            <div className=" flex flex-row justify-between"
-            >
-              <DisplayTechIcons techStack={techstack} />
-
-                <Button className="btn-primary">
-                    <Link href={feedback 
-                        ? `/interview/${interviewId}/feedback`
-                        : `/interview/${interviewId}`
-                    }>
-                        {feedback ? "Check Feedback" : "View Interview"}
-                    </Link>
-                </Button>
-            </div>
         </div>
+        <div className=" flex flex-row justify-between">
+          <DisplayTechIcons techStack={techstack} />
+
+          <Button className="btn-primary">
+            <Link
+              href={
+                feedback
+                  ? `/interview/${interviewId}/feedback`
+                  : `/interview/${interviewId}`
+              }
+            >
+              {feedback ? "Check Feedback" : "View Interview"}
+            </Link>
+          </Button>
+        </div>
+      </div>
     </div>
-  )
+  );
 };
 
 export default InterviewCard;
